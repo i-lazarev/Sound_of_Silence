@@ -1,11 +1,15 @@
 const tbody = document.querySelector("tbody");
-const names = document.querySelector("#names");
-const artists = document.querySelector("#artists");
-const albums = document.querySelector("#albums");
+
+const seconds = millis => {
+  let min = Math.floor(millis / 60000);
+  let sec = ((millis % 60000) / 1000).toFixed(0);
+  return min + ":" + (sec < 10 ? "0" : "") + sec;
+};
 
 music.forEach(x => {
-//   names.innerHTML += `<div>Name :${x.trackName}</div>`;
-//   artists.innerHTML += `<div>${x.artistName}</div>`;
-//   albums.innerHTML += `<div>${x.collectionName}</div>`;
-  tbody.innerHTML += `<tr><td>${x.trackName}</td><td>${x.artistName}</td><td>${x.collectionName}</td></tr>`;
+  tbody.innerHTML += `<tr><td>${music.indexOf(x) + 1}<td><img src="${
+    x.artworkUrl30
+  }"> ${x.trackName}</td><td>${x.artistName}</td><td>${
+    x.collectionName
+  }</td><td>${seconds(x.trackTimeMillis)}</td><td>${x.trackPrice}$</td></tr>`;
 });
