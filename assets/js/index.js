@@ -1,6 +1,5 @@
 const tbody = document.querySelector("tbody");
 const search = document.querySelector("#search");
-const inputField = document.querySelector("input").value;
 
 const seconds = millis => {
   let min = Math.floor(millis / 60000);
@@ -8,7 +7,7 @@ const seconds = millis => {
   return min + ":" + (sec < 10 ? "0" : "") + sec;
 };
 const listSongs = songs => {
-  tbody.innerHTML =""
+  tbody.innerHTML = "";
   songs.forEach(song => {
     tbody.innerHTML += `<tr><td>${songs.indexOf(song) + 1}<td><img src="${
       song.artworkUrl30
@@ -29,9 +28,8 @@ search.addEventListener("keyup", x => {
   );
   if (searchMusic.length === 0) {
     tbody.innerHTML = "<p>Not found</p>";
-     return;
+    return;
   }
   listSongs(searchMusic);
-  
 });
 listSongs(music);
